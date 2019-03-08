@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorComponent } from './error/error.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { InventoryItemsComponent } from './inventory-items/inventory-items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WelcomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    NavbarComponent,
+    FooterComponent,
+    InventoryItemsComponent
   ],
   imports: [
     BrowserModule,
