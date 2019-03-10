@@ -11,6 +11,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { InventoryItemsComponent } from './inventory-items/inventory-items.component';
 import { LogoutComponent } from './logout/logout.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { LogoutComponent } from './logout/logout.component';
     NavbarComponent,
     FooterComponent,
     InventoryItemsComponent,
-    LogoutComponent
+    LogoutComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
