@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorComponent } from './error/error.component';
 import { RouteGuardService } from './service/route-guard.service';
 import { LogoutComponent } from './logout/logout.component';
+import { ItemComponent } from './item/item.component';
 
 const routes: Routes = [
   {path:"", component: LoginComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path:"items", component: InventoryItemsComponent, canActivate:[RouteGuardService]},
   {path:"navbar", component: NavbarComponent, canActivate:[RouteGuardService]},
   {path:"logout", component: LogoutComponent, canActivate:[RouteGuardService]},
+  {path:"items/:id", component: ItemComponent, canActivate:[RouteGuardService]},
+
   {path:"**", component: ErrorComponent}
 ];
 
