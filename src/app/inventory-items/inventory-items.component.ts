@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InventoryDataService } from '../service/data/inventory-data.service';
 
 export class Item {
   constructor(
     public id:number,
     public description:string,
+    public category:string,
     public quantity:number,
     public dateAdded:Date,
   ){
@@ -18,19 +20,50 @@ export class Item {
   styleUrls: ['./inventory-items.component.css']
 })
 export class InventoryItemsComponent implements OnInit {
-
+  message:String
   items: Item[]
-  = [
-    new Item(1, "cheese", 1, new Date()),
-    new Item(2, "ice cream", 2, new Date()),
-    new Item(3, "oatmeal", 3, new Date())
-  ]
+  // old hardcoded table items
+  // = [
+  //   new Item(1, "cheese", 1, new Date()),
+  //   new Item(2, "ice cream", 2, new Date()),
+  //   new Item(3, "oatmeal", 3, new Date())
+  // ]
 
   constructor(
+    private itemSource:InventoryDataService,
     private router:Router
   ) { }
 
   ngOnInit() {
+    this.refreshItems();
+  }
+    refreshItems(){
+      this.itemSource.retrieveAllItems("johndw").subscribe(
+        response => {
+          console.log(response);
+          this.items = response;
+      }
+    ) 
+  }
+
+  deleteItem(id){
+    console.log(`delete item ${id}`)
+    this.itemSource.deleteItem("johndw", id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Removal of Item ${id} Successful`;
+        this.refreshItems();
+      }
+    )
+  }
+
+  updateItem(id){
+    console.log(`update ${id}`)
+    this.router.navigate(["items", id])
+  }
+
+  addItem(){
+    this.router.navigate(["items", 0])
   }
 
 }
