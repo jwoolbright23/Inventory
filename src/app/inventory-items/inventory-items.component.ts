@@ -6,7 +6,7 @@ export class Item {
   constructor(
     public id:number,
     public description:string,
-    public category:string,
+    public location:string,
     public quantity:number,
     public dateAdded:Date,
   ){
